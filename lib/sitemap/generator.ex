@@ -3,14 +3,12 @@ defmodule Sitemap.Generator do
   alias Sitemap.Builders.File, as: FileBuilder
 
   def add(links, attrs \\ []) do
-    Map.each(links, fn link ->
-      case FileBuilder.add(link, attrs) do
-        :ok   -> :ok
-        :full ->
-          full()
-          add(links, attrs)
-      end
-    end)
+    case FileBuilder.add(link, attrs) do
+      :ok   -> :ok
+      :full ->
+        full()
+        add(links, attrs)
+    end
   end
 
   def add_to_index(link, options \\ []) do
