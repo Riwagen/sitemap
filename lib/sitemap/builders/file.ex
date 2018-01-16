@@ -25,32 +25,17 @@ defmodule Sitemap.Builders.File do
     r
   end
 
-  # def add(link, attrs \\ []) do
-  #   content =
-  #     Url.to_xml(link, attrs)
-  #     |> XmlBuilder.generate
-
-  #   if sizelimit?(content) do
-  #     add_state :content, content
-  #     incr_state :link_count
-  #   else
-  #     :full
-  #   end
-  # end
-  
-  def add(links, attrs \\ []) do
-    Map.each(links, fn link -> 
-      content =
+  def add(link, attrs \\ []) do
+    content =
       Url.to_xml(link, attrs)
       |> XmlBuilder.generate
 
-      if sizelimit?(content) do
-        add_state :content, content
-        incr_state :link_count
-      else
-        :full
-      end  
-    end)
+    if sizelimit?(content) do
+      add_state :content, content
+      incr_state :link_count
+    else
+      :full
+    end
   end
 
   def write do
