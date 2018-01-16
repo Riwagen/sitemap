@@ -18,6 +18,7 @@ defmodule Sitemap.Adapters.File do
     else
       writefile(File.open!(path, [:write, :utf8]), data)
     end
+    data
   end
 
   defp writefile(stream, data) do
