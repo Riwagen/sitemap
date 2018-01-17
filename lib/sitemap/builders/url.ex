@@ -8,10 +8,10 @@ defmodule Sitemap.Builders.Url do
       element(:url, Funcs.eraser([
         element(:loc,         Path.join(Config.get.host, link || "")),
         element(:lastmod,     Funcs.iso8601(Keyword.get_lazy(attrs, :lastmod, fn -> Funcs.iso8601 end))),
-      #   element(:expires,     attrs[:expires]),
-      #   element(:changefreq,  attrs[:changefreq]),
-      #   element(:priority,    attrs[:priority]),
-      # ]))
+        element(:expires,     attrs[:expires]),
+        element(:changefreq,  attrs[:changefreq]),
+        element(:priority,    attrs[:priority]),
+      ]))
 
     elms = ifput attrs[:mobile],     elms, &append_last(&1, mobile())
     elms = ifput attrs[:geo],        elms, &append_last(&1, geo(attrs[:geo]))
