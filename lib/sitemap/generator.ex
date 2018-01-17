@@ -24,7 +24,7 @@ defmodule Sitemap.Generator do
     full()
     reset()
   end
-
+  
   def reset do
     Indexfile.write
     Indexfile.finalize_state

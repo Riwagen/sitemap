@@ -23,7 +23,7 @@ defmodule Sitemap.OptionsTest do
     end
     Sitemap.Config.set :compress, true
   end
-
+  
   test "Change create_index option in opt statement" do
     create do
       assert Sitemap.Config.get.create_index == true
