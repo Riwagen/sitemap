@@ -135,11 +135,11 @@ defmodule Sitemap.Builders.Url do
 
     attrs = %{rel: rel, href: data[:href]}
     attrs = Map.put attrs, :hreflang, data[:lang]
-    attrs = Map.put attrs, :media, data[:media]
+    # attrs = Map.put attrs, :media, data[:media]
 
     alternates(tail, elements ++ [element(:"xhtml:link", attrs)])
   end
-
+  
   defp geo(data) do
     element(:"geo:geo", [
       element(:"geo:format", data[:format])

@@ -351,7 +351,7 @@ defmodule Sitemap.BuildersUrlTest do
          nofollow: true,
          media: "only screen and (max-width: 640px)"
     ]]]
-
+    
     actual =
       Url.to_xml("/video.html", data)
       |> XmlBuilder.generate
