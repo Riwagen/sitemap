@@ -12,10 +12,7 @@ defmodule Sitemap.Consts do
 
   define :xml_header, """
   <?xml version="1.0" encoding="UTF-8"?>
-  <urlset
-    xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'
-    xmlns:xhtml='http://www.w3.org/1999/xhtml'
-  >
+  <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9' xmlns:xhtml='http://www.w3.org/1999/xhtml'>
   """
 
   # define :xml_header, """
@@ -38,13 +35,8 @@ defmodule Sitemap.Consts do
   define :xml_footer, "</urlset>"
 
   define :xml_idxheader, """
-<?xml version="1.0" encoding="UTF-8"?>
-  <sitemapindex
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-      http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  >
+  <?xml version="1.0" encoding="UTF-8"?>
+  <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   """
   define :xml_idxfooter, "</sitemapindex>"
 
