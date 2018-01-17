@@ -7,7 +7,7 @@ defmodule Sitemap.Generator do
       :ok   -> :ok
       :full ->
         full()
-        add(links, attrs)
+        add(link, attrs)
     end
   end
 
