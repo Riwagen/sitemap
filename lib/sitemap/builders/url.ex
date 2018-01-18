@@ -134,8 +134,8 @@ defmodule Sitemap.Builders.Url do
   defp alternates([data|tail], elements) do
     rel = if data[:nofollow], do: "alternate nofollow", else: "alternate"
 
-    attrs = %{hreflang: data[:lang]}
-    attrs = Map.merge(attrs, %{rel: rel, href: data[:href]})
+    attrs = %{rel: rel, href: data[:href]} |> IO.inspect
+    attrs = Map.put attrs, :hreflang, data[:lang] |> IO.inspect
     
     # attrs = Map.put attrs, :media, data[:media]
 
