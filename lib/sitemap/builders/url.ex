@@ -21,7 +21,6 @@ defmodule Sitemap.Builders.Url do
     elms = ifput attrs[:videos],     elms, &append_last(&1, videos(attrs[:videos]))
     elms = ifput attrs[:alternates], elms, &append_last(&1, alternates(attrs[:alternates]))
     elms
-    |> IO.inspect
   end
 
   defp ifput(bool, elms, fun) do
@@ -134,8 +133,8 @@ defmodule Sitemap.Builders.Url do
   defp alternates([data|tail], elements) do
     rel = if data[:nofollow], do: "alternate nofollow", else: "alternate"
 
-    attrs = %{rel: rel, href: data[:href]} |> IO.inspect
-    attrs = Map.put attrs, :hreflang, data[:lang] |> IO.inspect
+    attrs = %{rel: rel, href: data[:href]}
+    attrs = Map.put attrs, :hreflang, data[:lang]
     
     # attrs = Map.put attrs, :media, data[:media]
 
