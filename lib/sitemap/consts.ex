@@ -35,8 +35,7 @@ defmodule Sitemap.Consts do
   define :xml_footer, "</urlset>"
 
   define :xml_idxheader, """
-  <?xml version="1.0" encoding="UTF-8"?>
-  <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   """
   define :xml_idxfooter, "</sitemapindex>"
 
