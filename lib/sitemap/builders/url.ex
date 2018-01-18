@@ -5,8 +5,8 @@ defmodule Sitemap.Builders.Url do
 
   def to_xml(link, attrs \\ []) do
     elms =
-      element(:loc, Funcs.eraser([
-        element(:url,         attrs[:url]),
+      element(:url, Funcs.eraser([
+        element(:loc,         Path.join(Config.get.host, link || "")) |> IO.inspect,
         element(:lastmod,     Funcs.iso8601(Keyword.get_lazy(attrs, :lastmod, fn -> Funcs.iso8601 end))),
         element(:expires,     attrs[:expires]),
         element(:changefreq,  attrs[:changefreq]),
