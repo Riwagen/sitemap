@@ -6,11 +6,11 @@ defmodule Sitemap.Builders.Url do
   def to_xml(link, attrs \\ []) do
     elms =
       element(:url, Funcs.eraser([
-        element(:loc,         Path.join(Config.get.host, link || "")) |> IO.inspect,
-        element(:lastmod,     Funcs.iso8601(Keyword.get_lazy(attrs, :lastmod, fn -> Funcs.iso8601 end)))|> IO.inspect,
-        element(:expires,     attrs[:expires])|> IO.inspect,
-        element(:changefreq,  attrs[:changefreq])|> IO.inspect,
-        element(:priority,    attrs[:priority])|> IO.inspect,
+        element(:loc,         Path.join(Config.get.host, link || "")),
+        element(:lastmod,     Funcs.iso8601(Keyword.get_lazy(attrs, :lastmod, fn -> Funcs.iso8601 end))),
+        element(:expires,     attrs[:expires]),
+        element(:changefreq,  attrs[:changefreq]),
+        element(:priority,    attrs[:priority]),
       ]))
 
     elms = ifput attrs[:mobile],     elms, &append_last(&1, mobile())
@@ -134,8 +134,9 @@ defmodule Sitemap.Builders.Url do
   defp alternates([data|tail], elements) do
     rel = if data[:nofollow], do: "alternate nofollow", else: "alternate"
 
-    attrs = %{rel: rel, href: data[:href]}
-    attrs = Map.put attrs, :hreflang, data[:lang]
+    attrs = %{hreflang: data[:lang]}
+    attrs = Map.merge(attrs, %{rel: rel, href: data[:href]})
+    
     # attrs = Map.put attrs, :media, data[:media]
 
     alternates(tail, elements ++ [element(:"xhtml:link", attrs)])
