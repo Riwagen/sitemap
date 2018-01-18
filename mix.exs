@@ -38,7 +38,7 @@ defmodule Sitemap.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:xml_builder, ">= 0.0.0"},
+      {:xml_builder, github: "Riwagen/xml_builder"},
 
       {:ecto, ">= 1.1.0", only: :test},
       {:sweet_xml, ">= 0.0.0", only: :test},
