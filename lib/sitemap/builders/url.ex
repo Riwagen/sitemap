@@ -7,10 +7,10 @@ defmodule Sitemap.Builders.Url do
     elms =
       element(:url, Funcs.eraser([
         element(:loc,         Path.join(Config.get.host, link || "")) |> IO.inspect,
-        element(:lastmod,     Funcs.iso8601(Keyword.get_lazy(attrs, :lastmod, fn -> Funcs.iso8601 end))),
-        element(:expires,     attrs[:expires]),
-        element(:changefreq,  attrs[:changefreq]),
-        element(:priority,    attrs[:priority]),
+        element(:lastmod,     Funcs.iso8601(Keyword.get_lazy(attrs, :lastmod, fn -> Funcs.iso8601 end)))|> IO.inspect,
+        element(:expires,     attrs[:expires])|> IO.inspect,
+        element(:changefreq,  attrs[:changefreq])|> IO.inspect,
+        element(:priority,    attrs[:priority])|> IO.inspect,
       ]))
 
     elms = ifput attrs[:mobile],     elms, &append_last(&1, mobile())
@@ -21,6 +21,7 @@ defmodule Sitemap.Builders.Url do
     elms = ifput attrs[:videos],     elms, &append_last(&1, videos(attrs[:videos]))
     elms = ifput attrs[:alternates], elms, &append_last(&1, alternates(attrs[:alternates]))
     elms
+    |> IO.inspect
   end
 
   defp ifput(bool, elms, fun) do
